@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Sale.
+    -->
+    <changeSet id="20220517164712-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="sale"
+                                 constraintName="fk_sale__customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="sale"
+                                 constraintName="fk_sale__product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+
+        <addForeignKeyConstraint baseColumnNames="shop_id"
+                                 baseTableName="sale"
+                                 constraintName="fk_sale__shop_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shop"/>
+
+        <addForeignKeyConstraint baseColumnNames="shopper_id"
+                                 baseTableName="sale"
+                                 constraintName="fk_sale__shopper_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="sale_list_id"
+                                 baseTableName="sale"
+                                 constraintName="fk_sale__sale_list_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+
+        <addForeignKeyConstraint baseColumnNames="list_sale_id"
+                                 baseTableName="sale"
+                                 constraintName="fk_sale__list_sale_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shop"/>
+    </changeSet>
+</databaseChangeLog>

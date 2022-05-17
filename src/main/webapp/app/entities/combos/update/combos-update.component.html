@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ceet-combos-heading" data-cy="CombosCreateUpdateHeading" ceetTranslate="yourpcstoreApp.combos.home.createOrEditLabel">
+        Create or edit a Combos
+      </h2>
+
+      <div>
+        <ceet-alert-error></ceet-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ceetTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.combos.priceCombo" for="field_priceCombo">Price Combo</label>
+          <input
+            type="number"
+            class="form-control"
+            name="priceCombo"
+            id="field_priceCombo"
+            data-cy="priceCombo"
+            formControlName="priceCombo"
+          />
+          <div *ngIf="editForm.get('priceCombo')!.invalid && (editForm.get('priceCombo')!.dirty || editForm.get('priceCombo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('priceCombo')?.errors?.required"
+              ceetTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('priceCombo')?.errors?.number"
+              ceetTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.combos.product" for="field_product">Product</label>
+          <select class="form-control" id="field_product" data-cy="product" name="product" formControlName="product">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption"
+              *ngFor="let productOption of productsSharedCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.combos.comboList" for="field_comboList">Combo List</label>
+          <select class="form-control" id="field_comboList" data-cy="comboList" name="comboList" formControlName="comboList">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('comboList')!.value?.id ? editForm.get('comboList')!.value : productOption"
+              *ngFor="let productOption of productsSharedCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ceetTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ceetTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "yourpcstoreApp": {
+    "combos": {
+      "home": {
+        "title": "Combos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Combos",
+        "createOrEditLabel": "Crear o editar Combos",
+        "notFound": "Ningún Combos encontrado"
+      },
+      "created": "Un nuevo Combos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Combos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Combos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Combos {{ id }}?"
+      },
+      "detail": {
+        "title": "Combos"
+      },
+      "id": "ID",
+      "priceCombo": "Price Combo",
+      "product": "Product",
+      "comboList": "Combo List"
+    }
+  }
+}

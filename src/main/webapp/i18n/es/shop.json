@@ -1,0 +1,30 @@
+{
+  "yourpcstoreApp": {
+    "shop": {
+      "home": {
+        "title": "Shops",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Shop",
+        "createOrEditLabel": "Crear o editar Shop",
+        "notFound": "Ningún Shops encontrado"
+      },
+      "created": "Un nuevo Shop ha sido creado con el identificador {{ param }}",
+      "updated": "Un Shop ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Shop ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Shop {{ id }}?"
+      },
+      "detail": {
+        "title": "Shop"
+      },
+      "id": "ID",
+      "nameShop": "Name Shop",
+      "place": "Place",
+      "phoneShop": "Phone Shop",
+      "sale": "Sale",
+      "dealer": "Dealer",
+      "shopSales": "Shop Sales",
+      "shopDealer": "Shop Dealer"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "yourpcstoreApp": {
+    "query": {
+      "home": {
+        "title": "Queries",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Query",
+        "createOrEditLabel": "Crear o editar Query",
+        "notFound": "Ningún Queries encontrado"
+      },
+      "created": "Un nuevo Query ha sido creado con el identificador {{ param }}",
+      "updated": "Un Query ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Query ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Query {{ id }}?"
+      },
+      "detail": {
+        "title": "Query"
+      },
+      "id": "ID",
+      "price": "Price",
+      "dateQuery": "Date Query",
+      "customer": "Customer",
+      "product": "Product",
+      "consultant": "Consultant",
+      "queryList": "Query List"
+    }
+  }
+}

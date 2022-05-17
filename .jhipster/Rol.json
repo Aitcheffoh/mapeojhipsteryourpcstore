@@ -1,0 +1,29 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517164612",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "rol",
+  "fields": [
+    {
+      "fieldName": "roleName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "10"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Rol",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "rol",
+      "relationshipName": "roleName",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

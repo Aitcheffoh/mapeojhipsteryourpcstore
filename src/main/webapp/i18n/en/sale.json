@@ -1,0 +1,31 @@
+{
+  "yourpcstoreApp": {
+    "sale": {
+      "home": {
+        "title": "Sales",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sale",
+        "createOrEditLabel": "Create or edit a Sale",
+        "notFound": "No Sales found"
+      },
+      "created": "A new Sale is created with identifier {{ param }}",
+      "updated": "A Sale is updated with identifier {{ param }}",
+      "deleted": "A Sale is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sale {{ id }}?"
+      },
+      "detail": {
+        "title": "Sale"
+      },
+      "id": "ID",
+      "dateSale": "Date Sale",
+      "valueSale": "Value Sale",
+      "customer": "Customer",
+      "product": "Product",
+      "shop": "Shop",
+      "shopper": "Shopper",
+      "saleList": "Sale List",
+      "listSale": "List Sale"
+    }
+  }
+}

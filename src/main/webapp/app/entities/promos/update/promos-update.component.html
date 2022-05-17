@@ -1,0 +1,140 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ceet-promos-heading" data-cy="PromosCreateUpdateHeading" ceetTranslate="yourpcstoreApp.promos.home.createOrEditLabel">
+        Create or edit a Promos
+      </h2>
+
+      <div>
+        <ceet-alert-error></ceet-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ceetTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.promos.dateStart" for="field_dateStart">Date Start</label>
+          <div class="input-group">
+            <input
+              id="field_dateStart"
+              data-cy="dateStart"
+              type="text"
+              class="form-control"
+              name="dateStart"
+              ngbDatepicker
+              #dateStartDp="ngbDatepicker"
+              formControlName="dateStart"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateStartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('dateStart')!.invalid && (editForm.get('dateStart')!.dirty || editForm.get('dateStart')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateStart')?.errors?.required"
+              ceetTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.promos.dateEnd" for="field_dateEnd">Date End</label>
+          <div class="input-group">
+            <input
+              id="field_dateEnd"
+              data-cy="dateEnd"
+              type="text"
+              class="form-control"
+              name="dateEnd"
+              ngbDatepicker
+              #dateEndDp="ngbDatepicker"
+              formControlName="dateEnd"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateEndDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('dateEnd')!.invalid && (editForm.get('dateEnd')!.dirty || editForm.get('dateEnd')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateEnd')?.errors?.required"
+              ceetTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.promos.pricePromo" for="field_pricePromo">Price Promo</label>
+          <input
+            type="number"
+            class="form-control"
+            name="pricePromo"
+            id="field_pricePromo"
+            data-cy="pricePromo"
+            formControlName="pricePromo"
+          />
+          <div *ngIf="editForm.get('pricePromo')!.invalid && (editForm.get('pricePromo')!.dirty || editForm.get('pricePromo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('pricePromo')?.errors?.required"
+              ceetTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('pricePromo')?.errors?.number"
+              ceetTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.promos.product" for="field_product">Product</label>
+          <select class="form-control" id="field_product" data-cy="product" name="product" formControlName="product">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption"
+              *ngFor="let productOption of productsSharedCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.promos.promosList" for="field_promosList">Promos List</label>
+          <select class="form-control" id="field_promosList" data-cy="promosList" name="promosList" formControlName="promosList">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('promosList')!.value?.id ? editForm.get('promosList')!.value : productOption"
+              *ngFor="let productOption of productsSharedCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ceetTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ceetTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

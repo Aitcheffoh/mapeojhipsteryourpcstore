@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="ceet-sale-heading" data-cy="SaleCreateUpdateHeading" ceetTranslate="yourpcstoreApp.sale.home.createOrEditLabel">
+        Create or edit a Sale
+      </h2>
+
+      <div>
+        <ceet-alert-error></ceet-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" ceetTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.dateSale" for="field_dateSale">Date Sale</label>
+          <div class="input-group">
+            <input
+              id="field_dateSale"
+              data-cy="dateSale"
+              type="text"
+              class="form-control"
+              name="dateSale"
+              ngbDatepicker
+              #dateSaleDp="ngbDatepicker"
+              formControlName="dateSale"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateSaleDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('dateSale')!.invalid && (editForm.get('dateSale')!.dirty || editForm.get('dateSale')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateSale')?.errors?.required"
+              ceetTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.valueSale" for="field_valueSale">Value Sale</label>
+          <input type="number" class="form-control" name="valueSale" id="field_valueSale" data-cy="valueSale" formControlName="valueSale" />
+          <div *ngIf="editForm.get('valueSale')!.invalid && (editForm.get('valueSale')!.dirty || editForm.get('valueSale')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('valueSale')?.errors?.required"
+              ceetTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('valueSale')?.errors?.number"
+              ceetTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.customer" for="field_customer">Customer</label>
+          <select class="form-control" id="field_customer" data-cy="customer" name="customer" formControlName="customer">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="customerOption.id === editForm.get('customer')!.value?.id ? editForm.get('customer')!.value : customerOption"
+              *ngFor="let customerOption of customersSharedCollection; trackBy: trackCustomerById"
+            >
+              {{ customerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.product" for="field_product">Product</label>
+          <select class="form-control" id="field_product" data-cy="product" name="product" formControlName="product">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption"
+              *ngFor="let productOption of productsSharedCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.shop" for="field_shop">Shop</label>
+          <select class="form-control" id="field_shop" data-cy="shop" name="shop" formControlName="shop">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="shopOption.id === editForm.get('shop')!.value?.id ? editForm.get('shop')!.value : shopOption"
+              *ngFor="let shopOption of shopsSharedCollection; trackBy: trackShopById"
+            >
+              {{ shopOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.shopper" for="field_shopper">Shopper</label>
+          <select class="form-control" id="field_shopper" data-cy="shopper" name="shopper" formControlName="shopper">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="customerOption.id === editForm.get('shopper')!.value?.id ? editForm.get('shopper')!.value : customerOption"
+              *ngFor="let customerOption of customersSharedCollection; trackBy: trackCustomerById"
+            >
+              {{ customerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.saleList" for="field_saleList">Sale List</label>
+          <select class="form-control" id="field_saleList" data-cy="saleList" name="saleList" formControlName="saleList">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('saleList')!.value?.id ? editForm.get('saleList')!.value : productOption"
+              *ngFor="let productOption of productsSharedCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" ceetTranslate="yourpcstoreApp.sale.listSale" for="field_listSale">List Sale</label>
+          <select class="form-control" id="field_listSale" data-cy="listSale" name="listSale" formControlName="listSale">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="shopOption.id === editForm.get('listSale')!.value?.id ? editForm.get('listSale')!.value : shopOption"
+              *ngFor="let shopOption of shopsSharedCollection; trackBy: trackShopById"
+            >
+              {{ shopOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span ceetTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span ceetTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

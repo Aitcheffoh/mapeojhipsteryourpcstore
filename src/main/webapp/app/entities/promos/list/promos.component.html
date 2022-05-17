@@ -1,0 +1,84 @@
+<div>
+  <h2 id="page-heading" data-cy="PromosHeading">
+    <span ceetTranslate="yourpcstoreApp.promos.home.title">Promos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.promos.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-promos"
+        [routerLink]="['/promos/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.promos.home.createLabel"> Create a new Promos </span>
+      </button>
+    </div>
+  </h2>
+
+  <ceet-alert-error></ceet-alert-error>
+
+  <ceet-alert></ceet-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="promos?.length === 0">
+    <span ceetTranslate="yourpcstoreApp.promos.home.notFound">No promos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="promos && promos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ceetTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.promos.dateStart">Date Start</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.promos.dateEnd">Date End</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.promos.pricePromo">Price Promo</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.promos.product">Product</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.promos.promosList">Promos List</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let promos of promos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/promos', promos.id, 'view']">{{ promos.id }}</a>
+          </td>
+          <td>{{ promos.dateStart | formatMediumDate }}</td>
+          <td>{{ promos.dateEnd | formatMediumDate }}</td>
+          <td>{{ promos.pricePromo }}</td>
+          <td>
+            <div *ngIf="promos.product">
+              <a [routerLink]="['/product', promos.product?.id, 'view']">{{ promos.product?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="promos.promosList">
+              <a [routerLink]="['/product', promos.promosList?.id, 'view']">{{ promos.promosList?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/promos', promos.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/promos', promos.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(promos)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

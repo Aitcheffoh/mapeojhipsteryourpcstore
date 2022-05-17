@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="promos">
+      <h2 data-cy="promosDetailsHeading"><span ceetTranslate="yourpcstoreApp.promos.detail.title">Promos</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ promos.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.promos.dateStart">Date Start</span></dt>
+        <dd>
+          <span>{{ promos.dateStart | formatMediumDate }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.promos.dateEnd">Date End</span></dt>
+        <dd>
+          <span>{{ promos.dateEnd | formatMediumDate }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.promos.pricePromo">Price Promo</span></dt>
+        <dd>
+          <span>{{ promos.pricePromo }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.promos.product">Product</span></dt>
+        <dd>
+          <div *ngIf="promos.product">
+            <a [routerLink]="['/product', promos.product?.id, 'view']">{{ promos.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.promos.promosList">Promos List</span></dt>
+        <dd>
+          <div *ngIf="promos.promosList">
+            <a [routerLink]="['/product', promos.promosList?.id, 'view']">{{ promos.promosList?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/promos', promos.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517165012",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "shop",
+  "fields": [
+    {
+      "fieldName": "nameShop",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "place",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "phoneShop",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required", "unique"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Shop",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "listSale",
+      "relationshipName": "sale",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "dealer",
+      "otherEntityRelationshipName": "dealerList",
+      "relationshipName": "dealer",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "shopSales",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "dealer",
+      "otherEntityRelationshipName": "shop",
+      "relationshipName": "shopDealer",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

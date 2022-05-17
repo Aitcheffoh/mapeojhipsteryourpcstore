@@ -1,0 +1,98 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517164512",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "customer",
+  "fields": [
+    {
+      "fieldName": "names",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "lastNames",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "celphone",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexType",
+      "fieldType": "Sex",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MALE (Masculino),FEMALE (Femenino)"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "State",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVE (Activo),INACTIVE (Inactivo)"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Customer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "query",
+      "otherEntityRelationshipName": "consultant",
+      "relationshipName": "query",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "shopper",
+      "relationshipName": "sale",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "rol",
+      "otherEntityRelationshipName": "roleName",
+      "relationshipName": "rol",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "userSales",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "query",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "queryUser",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

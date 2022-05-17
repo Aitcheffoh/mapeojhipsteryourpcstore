@@ -1,0 +1,28 @@
+{
+  "yourpcstoreApp": {
+    "dealer": {
+      "home": {
+        "title": "Dealers",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Dealer",
+        "createOrEditLabel": "Crear o editar Dealer",
+        "notFound": "Ningún Dealers encontrado"
+      },
+      "created": "Un nuevo Dealer ha sido creado con el identificador {{ param }}",
+      "updated": "Un Dealer ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Dealer ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Dealer {{ id }}?"
+      },
+      "detail": {
+        "title": "Dealer"
+      },
+      "id": "ID",
+      "nameDealer": "Name Dealer",
+      "product": "Product",
+      "shop": "Shop",
+      "dealerList": "Dealer List",
+      "productDealer": "Product Dealer"
+    }
+  }
+}

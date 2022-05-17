@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sale">
+      <h2 data-cy="saleDetailsHeading"><span ceetTranslate="yourpcstoreApp.sale.detail.title">Sale</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sale.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.dateSale">Date Sale</span></dt>
+        <dd>
+          <span>{{ sale.dateSale | formatMediumDate }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.valueSale">Value Sale</span></dt>
+        <dd>
+          <span>{{ sale.valueSale }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.customer">Customer</span></dt>
+        <dd>
+          <div *ngIf="sale.customer">
+            <a [routerLink]="['/customer', sale.customer?.id, 'view']">{{ sale.customer?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.product">Product</span></dt>
+        <dd>
+          <div *ngIf="sale.product">
+            <a [routerLink]="['/product', sale.product?.id, 'view']">{{ sale.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.shop">Shop</span></dt>
+        <dd>
+          <div *ngIf="sale.shop">
+            <a [routerLink]="['/shop', sale.shop?.id, 'view']">{{ sale.shop?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.shopper">Shopper</span></dt>
+        <dd>
+          <div *ngIf="sale.shopper">
+            <a [routerLink]="['/customer', sale.shopper?.id, 'view']">{{ sale.shopper?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.saleList">Sale List</span></dt>
+        <dd>
+          <div *ngIf="sale.saleList">
+            <a [routerLink]="['/product', sale.saleList?.id, 'view']">{{ sale.saleList?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.sale.listSale">List Sale</span></dt>
+        <dd>
+          <div *ngIf="sale.listSale">
+            <a [routerLink]="['/shop', sale.listSale?.id, 'view']">{{ sale.listSale?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sale', sale.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

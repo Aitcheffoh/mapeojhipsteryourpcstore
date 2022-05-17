@@ -1,0 +1,28 @@
+{
+  "yourpcstoreApp": {
+    "promos": {
+      "home": {
+        "title": "Promos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Promos",
+        "createOrEditLabel": "Crear o editar Promos",
+        "notFound": "Ningún Promos encontrado"
+      },
+      "created": "Un nuevo Promos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Promos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Promos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Promos {{ id }}?"
+      },
+      "detail": {
+        "title": "Promos"
+      },
+      "id": "ID",
+      "dateStart": "Date Start",
+      "dateEnd": "Date End",
+      "pricePromo": "Price Promo",
+      "product": "Product",
+      "promosList": "Promos List"
+    }
+  }
+}

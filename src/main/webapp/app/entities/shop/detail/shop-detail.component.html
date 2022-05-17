@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="shop">
+      <h2 data-cy="shopDetailsHeading"><span ceetTranslate="yourpcstoreApp.shop.detail.title">Shop</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ shop.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.shop.nameShop">Name Shop</span></dt>
+        <dd>
+          <span>{{ shop.nameShop }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.shop.place">Place</span></dt>
+        <dd>
+          <span>{{ shop.place }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.shop.phoneShop">Phone Shop</span></dt>
+        <dd>
+          <span>{{ shop.phoneShop }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/shop', shop.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

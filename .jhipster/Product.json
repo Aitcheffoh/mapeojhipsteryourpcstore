@@ -1,0 +1,88 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517164912",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "product",
+  "fields": [
+    {
+      "fieldName": "nameProduct",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "45"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Product",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "saleList",
+      "relationshipName": "sale",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "combos",
+      "otherEntityRelationshipName": "comboList",
+      "relationshipName": "combos",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "promos",
+      "otherEntityRelationshipName": "promosList",
+      "relationshipName": "promos",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "query",
+      "otherEntityRelationshipName": "queryList",
+      "relationshipName": "query",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "dealer",
+      "otherEntityRelationshipName": "productDealer",
+      "relationshipName": "dealer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "dealer",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productList",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "sale",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "productSales",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "query",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "queryProduct",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "promos",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "promosProduct",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "combos",
+      "otherEntityRelationshipName": "product",
+      "relationshipName": "combosProduct",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

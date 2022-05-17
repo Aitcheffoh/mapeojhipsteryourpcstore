@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="CombosHeading">
+    <span ceetTranslate="yourpcstoreApp.combos.home.title">Combos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.combos.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-combos"
+        [routerLink]="['/combos/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.combos.home.createLabel"> Create a new Combos </span>
+      </button>
+    </div>
+  </h2>
+
+  <ceet-alert-error></ceet-alert-error>
+
+  <ceet-alert></ceet-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="combos?.length === 0">
+    <span ceetTranslate="yourpcstoreApp.combos.home.notFound">No combos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="combos && combos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ceetTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.combos.priceCombo">Price Combo</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.combos.product">Product</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.combos.comboList">Combo List</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let combos of combos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/combos', combos.id, 'view']">{{ combos.id }}</a>
+          </td>
+          <td>{{ combos.priceCombo }}</td>
+          <td>
+            <div *ngIf="combos.product">
+              <a [routerLink]="['/product', combos.product?.id, 'view']">{{ combos.product?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="combos.comboList">
+              <a [routerLink]="['/product', combos.comboList?.id, 'view']">{{ combos.comboList?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/combos', combos.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/combos', combos.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(combos)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

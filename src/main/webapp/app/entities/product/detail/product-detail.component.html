@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="product">
+      <h2 data-cy="productDetailsHeading"><span ceetTranslate="yourpcstoreApp.product.detail.title">Product</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ product.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.product.nameProduct">Name Product</span></dt>
+        <dd>
+          <span>{{ product.nameProduct }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.product.price">Price</span></dt>
+        <dd>
+          <span>{{ product.price }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.product.dealer">Dealer</span></dt>
+        <dd>
+          <div *ngIf="product.dealer">
+            <a [routerLink]="['/dealer', product.dealer?.id, 'view']">{{ product.dealer?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.product.productList">Product List</span></dt>
+        <dd>
+          <div *ngIf="product.productList">
+            <a [routerLink]="['/dealer', product.productList?.id, 'view']">{{ product.productList?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

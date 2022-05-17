@@ -1,0 +1,44 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517165212",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "promos",
+  "fields": [
+    {
+      "fieldName": "dateStart",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateEnd",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "pricePromo",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Promos",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "promosProduct",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "promos",
+      "relationshipName": "promosList",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="combos">
+      <h2 data-cy="combosDetailsHeading"><span ceetTranslate="yourpcstoreApp.combos.detail.title">Combos</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ combos.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.combos.priceCombo">Price Combo</span></dt>
+        <dd>
+          <span>{{ combos.priceCombo }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.combos.product">Product</span></dt>
+        <dd>
+          <div *ngIf="combos.product">
+            <a [routerLink]="['/product', combos.product?.id, 'view']">{{ combos.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.combos.comboList">Combo List</span></dt>
+        <dd>
+          <div *ngIf="combos.comboList">
+            <a [routerLink]="['/product', combos.comboList?.id, 'view']">{{ combos.comboList?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/combos', combos.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

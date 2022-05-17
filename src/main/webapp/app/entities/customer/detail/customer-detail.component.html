@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customer">
+      <h2 data-cy="customerDetailsHeading"><span ceetTranslate="yourpcstoreApp.customer.detail.title">Customer</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customer.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.names">Names</span></dt>
+        <dd>
+          <span>{{ customer.names }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.lastNames">Last Names</span></dt>
+        <dd>
+          <span>{{ customer.lastNames }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.email">Email</span></dt>
+        <dd>
+          <span>{{ customer.email }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.password">Password</span></dt>
+        <dd>
+          <span>{{ customer.password }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.phone">Phone</span></dt>
+        <dd>
+          <span>{{ customer.phone }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.celphone">Celphone</span></dt>
+        <dd>
+          <span>{{ customer.celphone }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.date">Date</span></dt>
+        <dd>
+          <span>{{ customer.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.sexType">Sex Type</span></dt>
+        <dd>
+          <span ceetTranslate="{{ 'yourpcstoreApp.Sex.' + customer.sexType }}">{{ customer.sexType }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.state">State</span></dt>
+        <dd>
+          <span ceetTranslate="{{ 'yourpcstoreApp.State.' + customer.state }}">{{ customer.state }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.customer.rol">Rol</span></dt>
+        <dd>
+          <div *ngIf="customer.rol">
+            <a [routerLink]="['/rol', customer.rol?.id, 'view']">{{ customer.rol?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/customer', customer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517164712",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "sale",
+  "fields": [
+    {
+      "fieldName": "dateSale",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "valueSale",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Sale",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "userSales",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "productSales",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "shopSales",
+      "relationshipName": "shop",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "shopper",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "saleList",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "sale",
+      "relationshipName": "listSale",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

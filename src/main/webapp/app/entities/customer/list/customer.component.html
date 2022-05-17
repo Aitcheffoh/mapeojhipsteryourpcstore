@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="CustomerHeading">
+    <span ceetTranslate="yourpcstoreApp.customer.home.title">Customers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.customer.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-customer"
+        [routerLink]="['/customer/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.customer.home.createLabel"> Create a new Customer </span>
+      </button>
+    </div>
+  </h2>
+
+  <ceet-alert-error></ceet-alert-error>
+
+  <ceet-alert></ceet-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="customers?.length === 0">
+    <span ceetTranslate="yourpcstoreApp.customer.home.notFound">No customers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="customers && customers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ceetTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.names">Names</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.lastNames">Last Names</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.email">Email</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.password">Password</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.phone">Phone</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.celphone">Celphone</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.date">Date</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.sexType">Sex Type</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.state">State</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.customer.rol">Rol</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/customer', customer.id, 'view']">{{ customer.id }}</a>
+          </td>
+          <td>{{ customer.names }}</td>
+          <td>{{ customer.lastNames }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.password }}</td>
+          <td>{{ customer.phone }}</td>
+          <td>{{ customer.celphone }}</td>
+          <td>{{ customer.date | formatMediumDate }}</td>
+          <td ceetTranslate="{{ 'yourpcstoreApp.Sex.' + customer.sexType }}">{{ customer.sexType }}</td>
+          <td ceetTranslate="{{ 'yourpcstoreApp.State.' + customer.state }}">{{ customer.state }}</td>
+          <td>
+            <div *ngIf="customer.rol">
+              <a [routerLink]="['/rol', customer.rol?.id, 'view']">{{ customer.rol?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/customer', customer.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/customer', customer.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(customer)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

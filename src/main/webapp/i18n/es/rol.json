@@ -1,0 +1,25 @@
+{
+  "yourpcstoreApp": {
+    "rol": {
+      "home": {
+        "title": "Rols",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Rol",
+        "createOrEditLabel": "Crear o editar Rol",
+        "notFound": "Ningún Rols encontrado"
+      },
+      "created": "Un nuevo Rol ha sido creado con el identificador {{ param }}",
+      "updated": "Un Rol ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Rol ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Rol {{ id }}?"
+      },
+      "detail": {
+        "title": "Rol"
+      },
+      "id": "ID",
+      "roleName": "Role Name",
+      "roleName": "Role Name"
+    }
+  }
+}

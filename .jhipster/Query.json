@@ -1,0 +1,51 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517164812",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "query",
+  "fields": [
+    {
+      "fieldName": "price",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateQuery",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Query",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "queryUser",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "queryProduct",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "query",
+      "relationshipName": "consultant",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "query",
+      "relationshipName": "queryList",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,47 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517165112",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "dealer",
+  "fields": [
+    {
+      "fieldName": "nameDealer",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength", "unique"],
+      "fieldValidateRulesMaxlength": "45"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Dealer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "productList",
+      "relationshipName": "product",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "shopDealer",
+      "relationshipName": "shop",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "shop",
+      "otherEntityRelationshipName": "dealer",
+      "relationshipName": "dealerList",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "dealer",
+      "relationshipName": "productDealer",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

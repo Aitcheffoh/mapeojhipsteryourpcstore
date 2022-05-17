@@ -1,0 +1,68 @@
+<div>
+  <h2 id="page-heading" data-cy="RolHeading">
+    <span ceetTranslate="yourpcstoreApp.rol.home.title">Rols</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.rol.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-rol"
+        [routerLink]="['/rol/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.rol.home.createLabel"> Create a new Rol </span>
+      </button>
+    </div>
+  </h2>
+
+  <ceet-alert-error></ceet-alert-error>
+
+  <ceet-alert></ceet-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="rols?.length === 0">
+    <span ceetTranslate="yourpcstoreApp.rol.home.notFound">No rols found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="rols && rols.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ceetTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.rol.roleName">Role Name</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rol of rols; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/rol', rol.id, 'view']">{{ rol.id }}</a>
+          </td>
+          <td>{{ rol.roleName }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/rol', rol.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/rol', rol.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(rol)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

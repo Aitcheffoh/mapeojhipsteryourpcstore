@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="query">
+      <h2 data-cy="queryDetailsHeading"><span ceetTranslate="yourpcstoreApp.query.detail.title">Query</span></h2>
+
+      <hr />
+
+      <ceet-alert-error></ceet-alert-error>
+
+      <ceet-alert></ceet-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span ceetTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ query.id }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.query.price">Price</span></dt>
+        <dd>
+          <span>{{ query.price }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.query.dateQuery">Date Query</span></dt>
+        <dd>
+          <span>{{ query.dateQuery | formatMediumDate }}</span>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.query.customer">Customer</span></dt>
+        <dd>
+          <div *ngIf="query.customer">
+            <a [routerLink]="['/customer', query.customer?.id, 'view']">{{ query.customer?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.query.product">Product</span></dt>
+        <dd>
+          <div *ngIf="query.product">
+            <a [routerLink]="['/product', query.product?.id, 'view']">{{ query.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.query.consultant">Consultant</span></dt>
+        <dd>
+          <div *ngIf="query.consultant">
+            <a [routerLink]="['/customer', query.consultant?.id, 'view']">{{ query.consultant?.id }}</a>
+          </div>
+        </dd>
+        <dt><span ceetTranslate="yourpcstoreApp.query.queryList">Query List</span></dt>
+        <dd>
+          <div *ngIf="query.queryList">
+            <a [routerLink]="['/product', query.queryList?.id, 'view']">{{ query.queryList?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span ceetTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/query', query.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span ceetTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

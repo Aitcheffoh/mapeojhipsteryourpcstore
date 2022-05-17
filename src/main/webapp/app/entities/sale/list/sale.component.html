@@ -1,0 +1,106 @@
+<div>
+  <h2 id="page-heading" data-cy="SaleHeading">
+    <span ceetTranslate="yourpcstoreApp.sale.home.title">Sales</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.sale.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-sale"
+        [routerLink]="['/sale/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span ceetTranslate="yourpcstoreApp.sale.home.createLabel"> Create a new Sale </span>
+      </button>
+    </div>
+  </h2>
+
+  <ceet-alert-error></ceet-alert-error>
+
+  <ceet-alert></ceet-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="sales?.length === 0">
+    <span ceetTranslate="yourpcstoreApp.sale.home.notFound">No sales found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="sales && sales.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span ceetTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.dateSale">Date Sale</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.valueSale">Value Sale</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.customer">Customer</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.product">Product</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.shop">Shop</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.shopper">Shopper</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.saleList">Sale List</span></th>
+          <th scope="col"><span ceetTranslate="yourpcstoreApp.sale.listSale">List Sale</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/sale', sale.id, 'view']">{{ sale.id }}</a>
+          </td>
+          <td>{{ sale.dateSale | formatMediumDate }}</td>
+          <td>{{ sale.valueSale }}</td>
+          <td>
+            <div *ngIf="sale.customer">
+              <a [routerLink]="['/customer', sale.customer?.id, 'view']">{{ sale.customer?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sale.product">
+              <a [routerLink]="['/product', sale.product?.id, 'view']">{{ sale.product?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sale.shop">
+              <a [routerLink]="['/shop', sale.shop?.id, 'view']">{{ sale.shop?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sale.shopper">
+              <a [routerLink]="['/customer', sale.shopper?.id, 'view']">{{ sale.shopper?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sale.saleList">
+              <a [routerLink]="['/product', sale.saleList?.id, 'view']">{{ sale.saleList?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="sale.listSale">
+              <a [routerLink]="['/shop', sale.listSale?.id, 'view']">{{ sale.listSale?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/sale', sale.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/sale', sale.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(sale)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" ceetTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{
+  "yourpcstoreApp": {
+    "Sex": {
+      "null": "",
+      "MALE": "Masculino",
+      "FEMALE": "Femenino"
+    }
+  }
+}

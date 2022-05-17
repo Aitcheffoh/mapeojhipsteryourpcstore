@@ -1,0 +1,34 @@
+{
+  "applications": ["yourpcstore"],
+  "changelogDate": "20220517165312",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "combos",
+  "fields": [
+    {
+      "fieldName": "priceCombo",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Combos",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "combosProduct",
+      "relationshipName": "product",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "combos",
+      "relationshipName": "comboList",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
