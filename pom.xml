@@ -396,8 +396,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <version>3.5.1</version>
                     <configuration>
+                        <verbose>true</verbose>
+                        <fork>true</fork>
+                        <executable>${JAVA_HOME}/bin/javac</executable>
+                        <compilerVersion>1.8</compilerVersion>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
                         <annotationProcessorPaths>
@@ -426,7 +430,7 @@
                         </annotationProcessorPaths>
                     </configuration>
                 </plugin>
-                <plugin>
+               <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
@@ -434,6 +438,7 @@
                         <source>${maven.compiler.source}</source>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
