@@ -24,6 +24,7 @@
 
     <properties>
         <!-- Build properties -->
+
         <maven.version>3.8.5</maven.version>
         <java.version>11</java.version>
         <node.version>v16.14.0</node.version>
@@ -297,6 +298,7 @@
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -669,7 +671,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven-resources-plugin.version}</version>
+                    <version>3.1.0</version>
                     <executions>
                         <execution>
                             <id>default-resources</id>
