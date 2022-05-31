@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://yourpcstore-database.mysql.database.azure.com/yourpcstore?useUnicode=true&characterEncoding=utf8&useSSL=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-    username: yourpcstore
-    password: admin123*
+    url: jdbc:mysql://127.0.0.1/yourpcstore?useUnicode=true&characterEncoding=utf8&useSSL=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    username: admin
+    password: 123456
     hikari:
       poolName: Hikari
       auto-commit: false
