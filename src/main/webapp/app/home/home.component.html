@@ -1,78 +1,152 @@
 <div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
+  <!--carrusel-->
 
-  <div class="col-md-9">
-    <h1 class="display-4"><span ceetTranslate="home.title">Welcome, Java Hipster!</span> (Yourpcstore)</h1>
-
-    <p class="lead" ceetTranslate="home.subtitle">This is your homepage</p>
-
-    <div [ngSwitch]="account !== null">
-      <div class="alert alert-success" *ngSwitchCase="true">
-        <span id="home-logged-message" *ngIf="account" ceetTranslate="home.logged.message" [translateValues]="{ username: account.login }"
-          >You are logged in as user "{{ account.login }}".</span
-        >
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../content/images/photo4.jpg" class="d-block w-100" alt="..." />
       </div>
-
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span ceetTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-        <a class="alert-link" (click)="login()" ceetTranslate="global.messages.info.authenticated.link">sign in</a
-        ><span ceetTranslate="global.messages.info.authenticated.suffix"
-          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-          password="user").</span
-        >
+      <div class="carousel-item">
+        <img src="../../content/images/photo2.jpg" class="d-block w-100" alt="..." />
       </div>
-
-      <div class="alert alert-warning" *ngSwitchCase="false">
-        <span ceetTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
-        <a class="alert-link" routerLink="account/register" ceetTranslate="global.messages.info.register.link">Register a new account</a>
+      <div class="carousel-item">
+        <img src="../../content/images/photo3.jpg" class="d-block w-100" alt="..." />
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
-    <p ceetTranslate="home.question">If you have any question on JHipster:</p>
+  <!--separador-->
 
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" ceetTranslate="home.link.homepage"
-          >JHipster homepage</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          ceetTranslate="home.link.stackoverflow"
-          >JHipster on Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          ceetTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" ceetTranslate="home.link.chat"
-          >JHipster public chat room</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" ceetTranslate="home.link.follow"
-          >follow @jhipster on Twitter</a
-        >
-      </li>
-    </ul>
+  <div id="separador" class="container-fluid">
+    <div id="sep" class="container w-50 pl-5 pr-5 rounded-lg">
+      <div class="row align-items-center">
+        <div class="col-sm p-3 text-light text-center">
+          <p class="text-light h3">Noticias</p>
+          <h4 class="h2 text-shadow">Mantente Actualizado</h4>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <p>
-      <span ceetTranslate="home.like">If you like JHipster, don't forget to give us a star on</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" ceetTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
+  <!--Caja noticias-->
+
+  <div id="noti">
+    <div class="container-md p-5">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card w-100 card-border mb-5">
+            <img src="../../content/images/imagen2.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card w-100 card-border mb-5">
+            <img src="../../content/images/imagen2.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card w-100 card-border mb-5">
+            <img src="../../content/images/imagen2.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="noti2">
+    <div class="container-md p-5">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card w-100 card-border mb-5">
+            <img src="../../content/images/imagen2.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card w-100 card-border mb-5">
+            <img src="../../content/images/imagen2.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="card w-100 card-border mb-5">
+            <img src="../../content/images/imagen2.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--separador-->
+
+  <div id="separador" class="container-fluid">
+    <div id="sep" class="container w-50 pl-5 pr-5 rounded-lg">
+      <div class="row align-items-center">
+        <div class="col-sm p-3 text-light text-center">
+          <p class="text-light h3">Contacto</p>
+          <h4 class="h2 text-shadow">Comunicate con Nosotros</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Contacto-->
+
+  <div id="contacto">
+    <div class="contenedor">
+      <div class="contenido">
+        <iframe
+          class="gmap_iframe"
+          width="100%"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=ceet&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        ></iframe>
+      </div>
+    </div>
+    <div style="margin-left: 30px" class="contenedor2">
+      <div class="contenido" style="margin-top: -15px">
+        <h1 style="margin-left: 30px; margin-top: 30px">Contacto</h1>
+        <h3 style="margin-left: 30px">Celular:3202457661</h3>
+        <h3 style="margin-left: 30px">Email:hecfpasaje@misena.edu.co</h3>
+        <h3 style="margin-left: 30px">Direccion:Sena Ceet, Av. 1 de Mayo #33-98, Bogotá</h3>
+      </div>
+    </div>
   </div>
 </div>
